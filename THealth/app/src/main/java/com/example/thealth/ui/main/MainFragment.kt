@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import com.example.thealth.MainActivity
 import com.example.thealth.R
+import com.example.thealth.ui.overview.OverviewFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -34,13 +37,15 @@ class MainFragment : Fragment() {
         // Check for existing Google Sign In account, if the user is already signed in
         // the GoogleSignInAccount will be non-null.
         val account = GoogleSignIn.getLastSignedInAccount(requireActivity())
-        updateUI(account)
+        //updateUI(account)
     }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -80,9 +85,11 @@ class MainFragment : Fragment() {
     private fun handleSignInResult(task: Task<GoogleSignInAccount>) {
         try {
             var account: GoogleSignInAccount = task.getResult(ApiException::class.java)!!
-            updateUI(account)
+//            updateUI(account)
+            temporaryupdateUI()
         } catch (e: ApiException){
             Log.e("test", "signInResult: Failed code = ${e.statusCode}")
+            temporaryupdateUI()
         }
     }
 
@@ -93,6 +100,16 @@ class MainFragment : Fragment() {
 
     private fun updateUI(userInfo: GoogleSignInAccount?) {
         Log.i("test", "Google Login Success [USER EMAIL] : ${userInfo!!.email}")
+        changePage()
+    }
+
+    private fun temporaryupdateUI(){
+        changePage()
+    }
+
+    private fun changePage() {
+        var fragment: Fragment = OverviewFragment.newInstance()
+        MainActivity().replaceFragment(activity!! as MainActivity, fragment, false)
     }
 
 }

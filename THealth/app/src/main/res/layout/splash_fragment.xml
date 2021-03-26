@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.splash.SplashFragment">
+
+    <TextView
+        android:id="@+id/appTitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center"
+        android:layout_marginTop="-95dp"
+        android:gravity="center"
+        android:text="G o o g l e F i t n e s s"
+        android:textSize="28sp"/>
+
+    <ImageView
+        android:id="@+id/appTitleIcon"
+        android:background="@drawable/splash_main_icon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical|center"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/appTitleIconWater"
+        android:background="@drawable/splash_waterdrop"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical|center"
+        android:layout_marginTop="-10dp"
+        android:layout_marginRight="25dp"/>
+
+    <ImageView
+        android:id="@+id/appTitleIconEx1"
+        android:background="@drawable/splash_exercise_1"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_gravity="top|left"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="40dp"/>
+
+    <ImageView
+        android:id="@+id/appTitleIconEx2"
+        android:background="@drawable/splash_exercise_2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="30dp"/>
+
+</FrameLayout>
